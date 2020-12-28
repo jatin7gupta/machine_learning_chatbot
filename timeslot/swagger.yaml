@@ -1,0 +1,208 @@
+swagger: '2.0'
+info:
+  description: This is a sample server for Assignment 2 of COMP9322. This will implement a Timeslot and reservation information system.
+  version: '1.0'
+  title: Timeslot Service
+  contact:
+    email: jatin.gupta@student.unsw.edu.au
+host: api.example.com.au
+basePath: /v1
+schemes: 
+- https
+- http
+paths:
+  /reservations:
+    get:
+      operationId: get_reservations
+      parameters:
+      - name: doctor_id
+        in: query
+        description: ID of the doctor
+        type: integer
+        format: int64
+      - name: datetime
+        in: query
+        description: datetime
+        type: string
+      - name: patient
+        in: query
+        description: Patient name
+        type: string
+      - name: If-Modified-Since
+        type: string
+        in: header
+        description: E-tag
+      tags: 
+      - Reservations
+      summary: Returns the reservations
+      description: Get all the reservations. Results can be filtered per doctor and time
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      responses:
+        200:
+          description: OK
+          headers:
+            Cache-Control:
+              description: Cache directive
+              type: string
+          schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: '#/definitions/Reservation'
+        304:
+          description: Not Modified
+        400:
+          description: Bad Request, Invalid parameters
+    post:
+      operationId: create_reservations
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Create a reservation with the doctor"
+        required: true
+        schema:
+          $ref: "#/definitions/NewReservation"
+      tags: 
+      - Reservations
+      summary: Create a reservation
+      description: Create a reservation with doctor on a timeslot
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      responses:
+        201:
+          description: Created
+          schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/definitions/Reservation'
+        400:
+          description: Bad Request, Invalid parameters
+        409:
+          description: Conflict
+  /reservations/{id}:
+    delete:
+      operationId: delete_reservations
+      parameters:
+      - in: path
+        type: string
+        name: id
+        description: "Id of the reservation"
+        required: true
+      tags: 
+      - Reservations
+      summary: Delete a reservation
+      description: Delete a reservation with doctor on a timeslot
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      responses:
+        204:
+          description: No Content
+        404:
+          description: Not Found
+
+
+
+  /timeslots:
+    get:
+      operationId: patch-timeslots
+      parameters:
+      - name: If-Modified-Since
+        type: string
+        in: header
+        description: E-tag
+      tags: 
+      - Timeslot
+      summary: Get all timeslots
+      description: Get all timeslot in Timeslot service
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      responses:
+        200:
+          description: OK
+          headers:
+            Cache-Control:
+              description: Cache directive
+              type: string
+          schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: '#/definitions/Timeslot'
+        
+
+definitions:
+
+  Timeslot:
+    type: string
+    example: "2020-01-08T18:00"
+
+  Reservation:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "7f6a0a"
+      datetime:
+        type: string
+        example: "2020-01-08T18:00"
+      doctor_id:
+        type: integer
+        format: int64
+        example: 123
+      patient:
+        type: string
+        example: "William"
+      links:
+        type: array
+        items:
+          type: object
+          properties:
+            delete:
+              $ref: '#/definitions/_delete'
+              
+  NewReservation:
+    type: object
+    properties:
+      datetime:
+        type: string
+        example: "2020-01-08T18:00"
+      doctor_id:
+        type: integer
+        format: int64
+        example: 123
+      patient:
+        type: string
+        example: "William"
+
+
+  _delete:
+    type: object
+    properties:
+      rel:
+        type: string
+        example: delete-reservation
+      href:
+        type: string
+        example: /reservation/{reservation_id}

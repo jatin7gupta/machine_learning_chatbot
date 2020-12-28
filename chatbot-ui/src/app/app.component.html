@@ -1,0 +1,42 @@
+<form *ngIf="!chat" [formGroup]="signup">
+  <div >
+    <mat-card class="example-card">
+      <mat-card-content>
+        <div class="login-form-width">
+          <mat-form-field>
+            <input formControlName="message" matInput placeholder="Enter Name" required>
+            <mat-error>Name required</mat-error>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" (click)="signupEvent()" class="top-margin" [disabled]="signup.invalid">Submit</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>
+
+<form *ngIf="chat" [formGroup]="chatForm">
+  <div >
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title></mat-card-title>
+        <ul>
+          <li class="no-bullets" *ngFor="let message of messages">
+            <p *ngIf="message.request" class="text-right">{{message.message}}</p>
+            <p *ngIf="!message.request">{{message.message}}</p>
+          </li>
+        </ul>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="login-form-width">
+          <mat-form-field>
+            <input formControlName="message" matInput placeholder="Enter message" required>
+            <mat-error>Message required</mat-error>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" (click)="request()" class="top-margin" [disabled]="chatForm.invalid">Send</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>

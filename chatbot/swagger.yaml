@@ -1,0 +1,53 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server for Assignment 2 COMP9322 which can book dentist appointment."
+  version: "1.0.0"
+  title: "Chatbot Service"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "example.swagger.io"
+basePath: "/v1"
+schemes:
+- "https"
+- "http"
+paths:
+  /chat:
+    get:
+      tags:
+      - "Chat"
+      summary: "Chat with the user to book dentist "
+      description: "You can ask about name, details of the dentists. You can even book appointments with them."
+      operationId: "chat"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "expression"
+        in: "query"
+        description: "Query from user. E.g. I want to book an appointment."
+        required: true
+        type: "string"
+      - name: "user"
+        in: "query"
+        description: "User's name"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: object
+            properties:
+              answer:
+                type: "string"
+                example: "The available doctors are, Dr Jhon (Paediatric Dentistry, Mascot), Dr Ruby (Orthodontics, Mascot), Dr Casey (Oral Surgery, Kensignton)."
+              user:
+                  type: "string"
+                  example: "Jhon"
+
+        "500":
+          description: "Internal server error"

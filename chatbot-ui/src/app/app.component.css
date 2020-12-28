@@ -1,0 +1,33 @@
+mat-grid-tile {
+  background: lightblue;
+}
+.login-form-width > * {
+  width: 100%;
+}
+
+.top-margin {
+  margin-top: 10px;
+}
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.example-card {
+  max-width: 328px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-right {
+  text-align: right;
+  color: blue;
+}
+.no-bullets {
+  list-style-type: none;
+}
+
+.text-left {
+  text-align: left;
+  color: gray;
+}
