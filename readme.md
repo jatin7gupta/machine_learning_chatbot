@@ -1,3 +1,5 @@
+# About
+Front end uses Angular for UI. Backend consist of three microservices. Dentist Service which handles information about dentists. Timeslot service which handles all the reservations. Chatbot service talks to frontend and takes decision to get data from different services, translates JSON to human friendly statements. 
 # Requirement
 * Node
 * Python3
