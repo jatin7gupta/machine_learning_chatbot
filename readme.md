@@ -1,24 +1,51 @@
+# Requirement
+* Node
+* Python3
+
+
+
 Install frontend, type in root project:
-Requirement: Node
+
+
+```bash 
 $ cd chatbot-ui
+```
+```bash
 $ npm install
+```
 
 Run frontend
+```bash
 $ npm start
+```
 
 Install Backend:
-Requirement: Python3
 1. Install and run chatbot service, type in root project
+```bash
 $ cd chatbot
+```
+```bash
 $ python3 -m venv ./venv
-
+```
+```bash
 (*nix) $ source ./venv/bin/activate | (windows) venv\Scripts\activate
+```
 
+```bash
 $ cd chatbot-app
-$ pip3 install -r requirements.txt
-$ cd chatbot-service
-$ python3 __init__.py
 
+```
+```bash
+$ pip3 install -r requirements.txt
+
+```
+```bash
+$ cd chatbot-service
+
+```
+```bash
+$ python3 __init__.py
+```
 Chatbot service app will run on port 5000
 
 1. Install and run denstist service, type in root project
