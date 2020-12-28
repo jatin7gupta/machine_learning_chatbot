@@ -1,6 +1,7 @@
 # Requirement
 * Node
 * Python3
+* Docker
 
 
 
