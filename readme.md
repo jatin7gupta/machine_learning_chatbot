@@ -5,7 +5,7 @@
 
 
 
-Install frontend, type in root project:
+## Install frontend, type in root project:
 
 
 ```bash 
@@ -13,13 +13,13 @@ $ cd chatbot-ui
 $ npm install
 ```
 
-Run frontend
+## Run frontend
 ```bash
 $ npm start
 ```
 
-Install Backend:
-1. Install and run chatbot service, type in root project
+## Install Backend:
+### Install and run chatbot service, type in root project
 ```bash
 $ cd chatbot
 $ python3 -m venv ./venv
@@ -34,7 +34,7 @@ $ python3 __init__.py
 ```
 Chatbot service app will run on port 5000
 
-1. Install and run denstist service, type in root project
+### Install and run denstist service, type in root project
 ```bash
 $ cd dentist
 $ docker build -t dentist:latest .
@@ -43,7 +43,7 @@ $ docker run -p 5001:5000 -t dentist:latest
 
 Dentist service app will run on port 5001 for local system
 
-1. Install and run timeslot service, type in root project
+### Install and run timeslot service, type in root project
 ```bash
 $ cd timeslot
 $ docker build -t timeslot:latest .
