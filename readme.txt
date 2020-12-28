@@ -1,4 +1,5 @@
 Install frontend, type in root project:
+Requirement: Node
 $ cd chatbot-ui
 $ npm install
 
@@ -6,6 +7,7 @@ Run frontend
 $ npm start
 
 Install Backend:
+Requirement: Python3
 1. Install and run chatbot service, type in root project
 $ cd chatbot
 $ python3 -m venv ./venv
