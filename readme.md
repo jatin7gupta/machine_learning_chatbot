@@ -54,4 +54,4 @@ Timeslot service app will run on port 5002 for local system
 
 Note: python3 may refer to python in your system
 
-This service is dependent on WIT.AI and its token to work. You also need to train your own WIT.AI uttrances. This biolerplate project will only give you a structure to work with.
+This service is dependent on WIT.AI and its token to work. You also need to train your own WIT.AI uttrances. This boilerplate project will only give you a structure to work with.
